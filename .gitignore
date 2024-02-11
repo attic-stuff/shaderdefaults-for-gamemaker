@@ -2,3 +2,4 @@
 * text=auto
 *.yy  linguist-language=Json
 *.yyp linguist-language=Json
+*.txt linguist-language=GLSL
