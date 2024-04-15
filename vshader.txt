@@ -5,16 +5,16 @@ attribute vec3 in_Position;
 attribute vec4 in_Colour;
 attribute vec2 in_TextureCoord;
 
-varying vec2 vv_texturecoordinate;
-varying vec4 vv_vertexcolor;
-/* varying vec3 vv_position; */
-/* varying vec3 vv_normal; */
+varying vec2 texturecoordinate;
+varying vec4 vertexcolor;
+/* varying vec3 vertexposition; */
+/* varying vec3 vertexnormal; */
 
 void main()	{
 	vec4 position = vec4(in_Position.xyz, 1.0);
 	gl_Position = gm_Matrices[MATRIX_WORLD_VIEW_PROJECTION] * position;
 	vv_texturecoordinate = in_TextureCoord;
-	vv_vertexcolor = in_Colour;
-	/* vv_normal = in_Normal; */
-	/* vv_position = (gm_Matrices[MATRIX_WORLD] * position).xyz; */
+	vertexcolor = in_Colour;
+	/* vertexnormal = in_Normal; */
+	/* vertexposition = (gm_Matrices[MATRIX_WORLD] * position).xyz; */
 }
