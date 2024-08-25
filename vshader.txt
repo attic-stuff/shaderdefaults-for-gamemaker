@@ -1,9 +1,9 @@
 /* passthru vertex shader */
 
-attribute vec3 in_Position;
-/* attribute vec3 in_Normal; */
-attribute vec4 in_Colour;
-attribute vec2 in_TextureCoord;
+attribute vec3 format_position;
+/* attribute vec3 format_normal; */
+attribute vec4 format_color;
+attribute vec2 format_texture_coordinate;
 
 varying vec2 texture_coordinate;
 varying vec4 vertex_color;
@@ -11,10 +11,10 @@ varying vec4 vertex_color;
 /* varying vec3 vertex_normal; */
 
 void main()	{
-	vec4 position = vec4(in_Position.xyz, 1.0);
+	vec4 position = vec4(format_position.xyz, 1.0);
 	gl_Position = gm_Matrices[MATRIX_WORLD_VIEW_PROJECTION] * position;
-	texture_coordinate = in_TextureCoord;
-	vertex_color = in_Colour;
-	/* vertex_normal = in_Normal; */
+	texture_coordinate = format_texture_coordinate;
+	vertex_color = format_color;
+	/* vertex_normal = format_normal; */
 	/* vertex_position = (gm_Matrices[MATRIX_WORLD] * position).xyz; */
 }
