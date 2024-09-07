@@ -1,9 +1,9 @@
 /* passthru vertex shader */
 
-attribute vec3 format_position;
+attribute vec3 in_Position;
 /* attribute vec3 format_normal; */
-attribute vec4 format_color;
-attribute vec2 format_texture_coordinate;
+attribute vec4 in_Colour;
+attribute vec2 in_TexCoord;
 
 varying vec2 texture_coordinate;
 varying vec4 vertex_color;
