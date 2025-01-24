@@ -1,11 +1,14 @@
-/* passthru fragment shader */
-
-varying vec2 texture_coordinate;
+varying vec2 vertex_texture_coordinate;
 varying vec4 vertex_color;
-/* varying vec3 vertex_position; */
-/* varying vec3 vertex_normal; */
+
+//varying vec3 vertex_position_world
+//varying vec3 vertex_position_world_view
+//varying vec3 vertex_normal_world
+//varying vec3 vertex_normal_world_view
 
 void main() {
-	vec4 color = vertex_color * texture2D(gm_BaseTexture, texture_coordinate);
-	gl_FragColor = color;
+    vec4 pixel_color = texture2D(gm_BaseTexture, vertex_texture_coordinate);
+    //pixel_color = pixel_color * vertex_color;
+    
+    gl_FragColor = pixel_color;
 }
