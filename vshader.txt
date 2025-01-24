@@ -1,20 +1,28 @@
-/* passthru vertex shader */
-
 attribute vec3 in_Position;
-/* attribute vec3 format_normal; */
+attribute vec3 in_Normal;
 attribute vec4 in_Colour;
-attribute vec2 in_TexCoord;
+attribute vec2 in_TextureCoord;
 
-varying vec2 texture_coordinate;
+varying vec2 vertex_texture_coordinate;
 varying vec4 vertex_color;
-/* varying vec3 vertex_position; */
-/* varying vec3 vertex_normal; */
 
-void main()	{
-	vec4 position = vec4(format_position.xyz, 1.0);
-	gl_Position = gm_Matrices[MATRIX_WORLD_VIEW_PROJECTION] * position;
-	texture_coordinate = format_texture_coordinate;
-	vertex_color = format_color;
-	/* vertex_normal = format_normal; */
-	/* vertex_position = (gm_Matrices[MATRIX_WORLD] * position).xyz; */
+//varying vec3 vertex_position_world
+//varying vec3 vertex_position_world_view
+//varying vec3 vertex_normal_world
+//varying vec3 vertex_normal_world_view
+
+void main() {
+    vec4 vertex_model_position = vec4(in_Position, 1.0);
+    
+    vertex_texture_coordinate = in_TextureCoord;
+    vertex_color = in_Colour;
+    
+    //vertex_position_world = (gm_Matrices[MATRIX_WORLD] * vertex_model_position).xyz;
+    //vertex_position_world_view = (gm_Matrices[MATRIX_WORLD_VIEW] * vertex_model_position).xyz;
+    
+    //vec4 vertex_normal = vec4(in_Normal, 0.0);
+    //vertex_normal_world = (gm_Matrices[MATRIX_WORLD] * vertex_normal).xyz;
+    //vertex_normal_world_view = (gm_Matrices[MATRIX_WORLD_VIEW] * vertex_normal).xyz;
+    
+    gl_Position = gm_Matrices[MATRIX_WORLD_VIEW_PROJECTION] * vertex_model_position;
 }
